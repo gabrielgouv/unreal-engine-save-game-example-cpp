@@ -83,7 +83,8 @@ You can download this project and explore how integrate your saved data in your 
             {
                 GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("No saved games found. Trying to save a new one."));
                 
-                SaveGameObject = NewObject<USGESaveGame>();
+                // Instantiate a new SaveGame object
+                SaveGameObject = Cast<USGESaveGame>(UGameplayStatics::CreateSaveGameObject(USGESaveGame::StaticClass()));
       
                 // Call SaveGameToSlot to serialize and save our SaveGameObject with name: <SaveGameSlotName>.sav
                 const bool IsSaved = UGameplayStatics::SaveGameToSlot(SaveGameObject, SaveGameSlotName, 0);

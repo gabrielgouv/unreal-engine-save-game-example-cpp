@@ -21,7 +21,7 @@ void USGEGameInstance::LoadGame()
     {
         GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("No saved games found. Trying to save a new one."));
         
-        SaveGameObject = NewObject<USGESaveGame>();
+        SaveGameObject = Cast<USGESaveGame>(UGameplayStatics::CreateSaveGameObject(USGESaveGame::StaticClass()));
         const bool IsSaved = UGameplayStatics::SaveGameToSlot(SaveGameObject, SaveGameSlotName, 0);
 
         LogIfGameWasSavedOrNot(IsSaved);
